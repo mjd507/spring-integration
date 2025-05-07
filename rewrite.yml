@@ -1,0 +1,11 @@
+type: specs.openrewrite.org/v1beta/recipe
+name: junit4ToJunit5
+displayName: JUnit Jupiter
+description: |
+  Junit5 Recipe.
+tags:
+  - junit
+  - testing
+recipeList:
+  - org.openrewrite.java.testing.junit5.JUnit4to5Migration
+  - org.openrewrite.java.testing.junit5.RemoveObsoleteRunners

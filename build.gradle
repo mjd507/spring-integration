@@ -25,6 +25,7 @@ plugins {
     id 'com.github.spotbugs' version '6.1.11'
     id 'com.google.protobuf' version '0.9.5' apply false
     id 'io.freefair.aggregate-javadoc' version '8.13.1'
+    id 'org.openrewrite.rewrite' version '7.5.0' apply false
 }
 
 if (isCI) {
@@ -202,8 +203,14 @@ configure(javaProjects) { subproject ->
     apply plugin: 'checkstyle'
     apply plugin: 'kotlin'
     apply plugin: 'kotlin-spring'
+    apply plugin: 'org.openrewrite.rewrite'
 
     apply from: "${rootDir}/gradle/publish-maven.gradle"
+
+    rewrite {
+        activeRecipe("junit4ToJunit5")
+        configFile = rootProject.file('rewrite.yml')
+    }
 
     def scopeAttribute = Attribute.of('dependency.scope', String)
 
@@ -284,7 +291,8 @@ configure(javaProjects) { subproject ->
         attributesSchema {
             attribute(scopeAttribute)
         }
-
+        rewrite(platform("org.openrewrite.recipe:rewrite-recipe-bom:latest.release"))
+        rewrite("org.openrewrite.recipe:rewrite-spring")
         if (!(subproject.name ==~ /.*-test.*/)) {
             testImplementation(project(':spring-integration-test-support')) {
                 exclude group: 'org.hamcrest'
