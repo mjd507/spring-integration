@@ -30,13 +30,13 @@ public class MySqlChannelMessageStoreQueryProvider implements ChannelMessageStor
 		return SELECT_COMMON
 				+ "and %PREFIX%CHANNEL_MESSAGE.MESSAGE_ID not in (:message_ids) "
 				+ "order by CREATED_DATE, MESSAGE_SEQUENCE " +
-				"LIMIT 1 FOR UPDATE SKIP LOCKED";
+				"";
 	}
 
 	@Override
 	public String getPollFromGroupQuery() {
 		return SELECT_COMMON +
-				"order by CREATED_DATE, MESSAGE_SEQUENCE LIMIT 1 FOR UPDATE SKIP LOCKED";
+				"order by CREATED_DATE, MESSAGE_SEQUENCE ";
 	}
 
 	@Override
@@ -44,14 +44,14 @@ public class MySqlChannelMessageStoreQueryProvider implements ChannelMessageStor
 		return SELECT_COMMON +
 				"and %PREFIX%CHANNEL_MESSAGE.MESSAGE_ID not in (:message_ids) " +
 				"order by MESSAGE_PRIORITY DESC, CREATED_DATE, MESSAGE_SEQUENCE " +
-				"LIMIT 1 FOR UPDATE SKIP LOCKED";
+				"";
 	}
 
 	@Override
 	public String getPriorityPollFromGroupQuery() {
 		return SELECT_COMMON +
 				"order by MESSAGE_PRIORITY DESC, CREATED_DATE, MESSAGE_SEQUENCE " +
-				"LIMIT 1 FOR UPDATE SKIP LOCKED";
+				"";
 	}
 
 }

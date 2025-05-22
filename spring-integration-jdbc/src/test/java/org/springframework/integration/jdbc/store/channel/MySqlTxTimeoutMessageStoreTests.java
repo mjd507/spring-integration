@@ -16,8 +16,9 @@
 
 package org.springframework.integration.jdbc.store.channel;
 
-import org.junit.jupiter.api.Disabled;
-
+import org.springframework.integration.jdbc.mysql.MySqlContainerTest;
+import org.springframework.integration.test.condition.LogLevels;
+import org.springframework.integration.test.condition.LongRunningTest;
 import org.springframework.test.context.ContextConfiguration;
 
 /**
@@ -26,8 +27,9 @@ import org.springframework.test.context.ContextConfiguration;
  * @author Artem Bilan
  *
  */
-@Disabled
+@LongRunningTest
 @ContextConfiguration
-public class MySqlTxTimeoutMessageStoreTests extends AbstractTxTimeoutMessageStoreTests {
+@LogLevels(categories = "org.springframework.integration", level = "DEBUG")
+public class MySqlTxTimeoutMessageStoreTests extends AbstractTxTimeoutMessageStoreTests implements MySqlContainerTest {
 
 }
