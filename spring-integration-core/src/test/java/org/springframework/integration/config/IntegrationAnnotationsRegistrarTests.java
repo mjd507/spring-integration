@@ -28,16 +28,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.messaging.MessageHandler;
-import org.springframework.test.context.support.TestPropertySourceUtils;
 
 /**
  * @author Jiandong Ma
  */
-class IntegrationRegistrarTests {
+class IntegrationAnnotationsRegistrarTests {
 
 	@Test
-	void testDefaultEnableMessagingAnnotationsProcessing() {
-		try (var context = new AnnotationConfigApplicationContext(Config.class)) {
+	void testEnableIntegrationAnnotations() {
+		try (var context = new AnnotationConfigApplicationContext(Config1.class)) {
 
 			assertContainsBean(context, IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME);
 			assertContainsBean(context, Introspector.decapitalize(MessagingAnnotationBeanPostProcessor.class.getName()));
@@ -50,22 +49,8 @@ class IntegrationRegistrarTests {
 	}
 
 	@Test
-	void testManualEnableMessagingAnnotationsProcessing() {
-		try (var context = createApplicationContext(true)) {
-
-			assertContainsBean(context, IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME);
-			assertContainsBean(context, Introspector.decapitalize(MessagingAnnotationBeanPostProcessor.class.getName()));
-
-			assertContainsBean(context, "inputChannel");
-			assertContainsBean(context, "customMessageHandler");
-			assertContainsBean(context, "customMessageHandler.serviceActivator");
-			assertContainsBean(context, "customMessageHandler.serviceActivator.handler");
-		}
-	}
-
-	@Test
-	void testDisableMessagingAnnotationsProcessing() {
-		try (var context = createApplicationContext(false)) {
+	void testNoEnableIntegrationAnnotations() {
+		try (var context = new AnnotationConfigApplicationContext(Config2.class)) {
 
 			assertDoesNotContainsBean(context, IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME);
 			assertDoesNotContainsBean(context, Introspector.decapitalize(MessagingAnnotationBeanPostProcessor.class.getName()));
@@ -74,13 +59,13 @@ class IntegrationRegistrarTests {
 			assertContainsBean(context, "customMessageHandler");
 			assertDoesNotContainsBean(context, "customMessageHandler.serviceActivator");
 			assertDoesNotContainsBean(context, "customMessageHandler.serviceActivator.handler");
-
 		}
 	}
 
 	@Configuration
 	@EnableIntegration
-	static class Config {
+	@EnableIntegrationAnnotations
+	static class Config1 {
 
 		@Bean
 		@ServiceActivator(inputChannel = "inputChannel")
@@ -92,14 +77,18 @@ class IntegrationRegistrarTests {
 
 	}
 
-	static AnnotationConfigApplicationContext createApplicationContext(boolean enableAnnotationsProcessing) {
-		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-		TestPropertySourceUtils.addInlinedPropertiesToEnvironment(context.getEnvironment(),
-				"spring.integration.annotations.enable=" + enableAnnotationsProcessing);
+	@Configuration
+	@EnableIntegration
+	static class Config2 {
 
-		context.register(Config.class);
-		context.refresh();
-		return context;
+		@Bean
+		@ServiceActivator(inputChannel = "inputChannel")
+		MessageHandler customMessageHandler() {
+			return message -> {
+
+			};
+		}
+
 	}
 
 	static void assertContainsBean(ApplicationContext context, String beanName) {

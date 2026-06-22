@@ -16,17 +16,13 @@
 
 package org.springframework.integration.config;
 
-import java.beans.Introspector;
-
 import org.jspecify.annotations.Nullable;
 
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.context.ApplicationContextException;
-import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
-import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotationMetadata;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.util.ClassUtils;
@@ -41,7 +37,7 @@ import org.springframework.util.ClassUtils;
  *
  * @since 4.0
  */
-public class IntegrationRegistrar implements ImportBeanDefinitionRegistrar, EnvironmentAware {
+public class IntegrationRegistrar implements ImportBeanDefinitionRegistrar {
 
 	static {
 		if (ClassUtils.isPresent("org.springframework.integration.dsl.support.Function", null)) {
@@ -52,19 +48,10 @@ public class IntegrationRegistrar implements ImportBeanDefinitionRegistrar, Envi
 		}
 	}
 
-	@SuppressWarnings("NullAway.Init")
-	private Environment environment;
-
-	@Override
-	public void setEnvironment(Environment environment) {
-		this.environment = environment;
-	}
-
 	/**
 	 * Invoked by the framework when an &#64;EnableIntegration annotation is encountered.
 	 * Also called with {@code null} {@code importingClassMetadata} from {@code AbstractIntegrationNamespaceHandler}
-	 * to register the same beans when using XML configuration. Also called by {@code AnnotationConfigParser}
-	 * to register the messaging annotation post processors (for {@code <int:annotation-config/>}).
+	 * to register the same beans when using XML configuration.
 	 */
 	@Override
 	public void registerBeanDefinitions(@Nullable AnnotationMetadata importingClassMetadata,
@@ -76,11 +63,6 @@ public class IntegrationRegistrar implements ImportBeanDefinitionRegistrar, Envi
 		registerDefaultConfiguringBeanFactoryPostProcessor(registry);
 		registerIntegrationConfigurationBeanFactoryPostProcessor(registry);
 
-		if (importingClassMetadata != null
-				&& this.environment.getProperty("spring.integration.annotations.enable", Boolean.class, true)) {
-
-			registerMessagingAnnotationPostProcessors(registry);
-		}
 		registerGatewayProxyInstantiationPostProcessor(registry);
 	}
 
@@ -111,32 +93,6 @@ public class IntegrationRegistrar implements ImportBeanDefinitionRegistrar, Envi
 							.setRole(BeanDefinition.ROLE_INFRASTRUCTURE);
 			registry.registerBeanDefinition(IntegrationContextUtils.INTEGRATION_CONFIGURATION_POST_PROCESSOR_BEAN_NAME,
 					postProcessorBuilder.getBeanDefinition());
-		}
-	}
-
-	/**
-	 * Register {@link MessagingAnnotationPostProcessor} and
-	 * {@link MessagingAnnotationBeanPostProcessor},
-	 * if necessary.
-	 * @param registry The {@link BeanDefinitionRegistry} to register additional {@link BeanDefinition}s.
-	 * @see MessagingAnnotationPostProcessor#messagingAnnotationBeanPostProcessor()
-	 */
-	private void registerMessagingAnnotationPostProcessors(BeanDefinitionRegistry registry) {
-		if (!registry.containsBeanDefinition(IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME)) {
-			registry.registerBeanDefinition(IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME,
-					BeanDefinitionBuilder.genericBeanDefinition(MessagingAnnotationPostProcessor.class)
-							.setRole(BeanDefinition.ROLE_INFRASTRUCTURE)
-							.getBeanDefinition());
-		}
-
-		String beanName = Introspector.decapitalize(MessagingAnnotationBeanPostProcessor.class.getName());
-		if (!registry.containsBeanDefinition(beanName)) {
-			registry.registerBeanDefinition(beanName,
-					BeanDefinitionBuilder.genericBeanDefinition()
-							.setFactoryMethodOnBean("messagingAnnotationBeanPostProcessor",
-									IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME)
-							.setRole(BeanDefinition.ROLE_INFRASTRUCTURE)
-							.getBeanDefinition());
 		}
 	}
 
