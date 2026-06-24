@@ -35,6 +35,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.AggregatorFactoryBean;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.PollableChannel;
@@ -92,6 +93,7 @@ public class AnnotationAggregatorTests {
 
 	@Configuration(proxyBeanMethods = false)
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@ImportResource("org/springframework/integration/aggregator/integration/AnnotationAggregatorTests-context.xml")
 	public static class TestConfiguration {
 

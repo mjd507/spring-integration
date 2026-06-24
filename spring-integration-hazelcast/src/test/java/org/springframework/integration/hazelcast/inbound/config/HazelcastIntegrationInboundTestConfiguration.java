@@ -33,6 +33,7 @@ import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.hazelcast.DistributedSQLIterationType;
 import org.springframework.integration.hazelcast.HazelcastIntegrationTestUser;
 import org.springframework.integration.hazelcast.inbound.HazelcastClusterMonitorMessageProducer;
@@ -49,6 +50,7 @@ import org.springframework.messaging.PollableChannel;
  */
 @Configuration
 @EnableIntegration
+@EnableIntegrationAnnotations
 public class HazelcastIntegrationInboundTestConfiguration {
 
 	@Bean

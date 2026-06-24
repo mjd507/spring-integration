@@ -21,8 +21,6 @@ import assertk.assertions.*
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
-import org.springframework.beans.factory.BeanFactory
-import org.springframework.beans.factory.ListableBeanFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.context.annotation.Bean
@@ -32,6 +30,7 @@ import org.springframework.integration.channel.DirectChannel
 import org.springframework.integration.channel.FluxMessageChannel
 import org.springframework.integration.channel.QueueChannel
 import org.springframework.integration.config.EnableIntegration
+import org.springframework.integration.config.EnableIntegrationAnnotations
 import org.springframework.integration.dsl.integrationFlow
 import org.springframework.integration.endpoint.SourcePollingChannelAdapter
 import org.springframework.integration.gateway.GatewayProxyFactoryBean
@@ -239,6 +238,7 @@ class FunctionsTests {
 
 	@Configuration
 	@EnableIntegration
+    @EnableIntegrationAnnotations
 	@IntegrationComponentScan
 	class Config {
 

@@ -29,6 +29,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.MessagingAnnotationBeanPostProcessor;
 import org.springframework.integration.endpoint.EventDrivenConsumer;
 import org.springframework.integration.handler.advice.AbstractRequestHandlerAdvice;
@@ -274,6 +275,7 @@ public class FilterAnnotationPostProcessorTests {
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class Config {
 
 	}

@@ -35,6 +35,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.ControlBusFactoryBean;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.integration.jdbc.StoredProcExecutor;
@@ -91,6 +92,7 @@ public class StoredProcJavaConfigTests implements TestApplicationContextAware {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class Config {
 
 		@Bean

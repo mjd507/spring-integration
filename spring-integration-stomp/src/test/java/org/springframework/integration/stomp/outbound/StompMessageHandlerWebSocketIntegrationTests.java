@@ -39,6 +39,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.event.inbound.ApplicationEventListeningMessageProducer;
 import org.springframework.integration.stomp.StompSessionManager;
 import org.springframework.integration.stomp.WebSocketStompSessionManager;
@@ -162,6 +163,7 @@ public class StompMessageHandlerWebSocketIntegrationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ContextConfiguration {
 
 		@Bean

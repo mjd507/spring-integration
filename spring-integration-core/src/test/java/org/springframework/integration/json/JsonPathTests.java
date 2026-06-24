@@ -37,6 +37,7 @@ import org.springframework.integration.MessageRejectedException;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.integration.transformer.MessageTransformationException;
 import org.springframework.messaging.Message;
@@ -228,6 +229,7 @@ public class JsonPathTests {
 	@Configuration
 	@ImportResource("classpath:org/springframework/integration/json/JsonPathTests-context.xml")
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class JsonPathTestsContextConfiguration {
 
 		@Bean

@@ -40,6 +40,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.rsocket.ClientRSocketConnector;
 import org.springframework.integration.rsocket.RSocketConnectedEvent;
 import org.springframework.integration.rsocket.ServerRSocketConnector;
@@ -176,6 +177,7 @@ public class RSocketInboundGatewayIntegrationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class ServerConfig extends CommonConfig {
 
 		final Sinks.One<RSocketRequester> clientRequester = Sinks.one();
@@ -208,6 +210,7 @@ public class RSocketInboundGatewayIntegrationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ClientConfig extends CommonConfig {
 
 		@Bean

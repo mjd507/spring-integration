@@ -73,6 +73,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.context.IntegrationProperties;
 import org.springframework.integration.handler.AbstractReplyProducingMessageHandler;
@@ -660,6 +661,7 @@ public class GatewayInterfaceTests {
 			includeFilters = @ComponentScan.Filter(TestMessagingGateway.class),
 			nameGenerator = CustomBeanNameGenerator.class)
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@Import(ImportedGateway.class)
 	public static class TestConfig {
 

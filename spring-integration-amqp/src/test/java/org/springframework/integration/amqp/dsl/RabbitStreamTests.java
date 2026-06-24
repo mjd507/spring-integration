@@ -32,6 +32,7 @@ import org.springframework.integration.amqp.support.RabbitTestContainer;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
@@ -87,6 +88,7 @@ public class RabbitStreamTests implements RabbitTestContainer {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ContextConfiguration {
 
 		@Bean

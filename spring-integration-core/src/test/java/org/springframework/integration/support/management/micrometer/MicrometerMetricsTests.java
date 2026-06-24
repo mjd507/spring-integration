@@ -40,6 +40,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.NullChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableIntegrationManagement;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
@@ -268,6 +269,7 @@ public class MicrometerMetricsTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableIntegrationManagement
 	public static class Config {
 

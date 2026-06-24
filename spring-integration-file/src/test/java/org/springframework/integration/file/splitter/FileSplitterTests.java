@@ -46,6 +46,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.FluxMessageChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.file.FileHeaders;
 import org.springframework.integration.file.splitter.FileSplitter.FileMarker;
 import org.springframework.integration.handler.advice.IdempotentReceiverInterceptor;
@@ -399,6 +400,7 @@ public class FileSplitterTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@ImportResource("classpath:org/springframework/integration/file/splitter/FileSplitterTests-context.xml")
 	public static class ContextConfiguration {
 

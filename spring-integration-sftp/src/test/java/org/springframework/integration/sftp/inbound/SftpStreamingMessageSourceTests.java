@@ -39,6 +39,7 @@ import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.endpoint.SourcePollingChannelAdapter;
 import org.springframework.integration.file.FileHeaders;
@@ -248,6 +249,7 @@ public class SftpStreamingMessageSourceTests extends SftpTestSupport {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class Config {
 
 		@Bean

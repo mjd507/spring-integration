@@ -37,6 +37,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.FixedSubscriberChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessagingTemplate;
 import org.springframework.integration.history.MessageHistory;
 import org.springframework.integration.support.MessageBuilder;
@@ -158,6 +159,7 @@ public class RoutingSlipTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class RoutingSlipConfiguration {
 
 		@Bean

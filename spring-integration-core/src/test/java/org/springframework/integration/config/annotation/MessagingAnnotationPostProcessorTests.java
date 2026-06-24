@@ -37,6 +37,7 @@ import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.MessagingAnnotationBeanPostProcessor;
 import org.springframework.integration.endpoint.AbstractEndpoint;
 import org.springframework.integration.handler.advice.AbstractRequestHandlerAdvice;
@@ -388,6 +389,7 @@ public class MessagingAnnotationPostProcessorTests {
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class Config {
 
 	}

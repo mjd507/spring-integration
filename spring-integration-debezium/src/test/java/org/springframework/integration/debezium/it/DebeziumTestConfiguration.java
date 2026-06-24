@@ -26,6 +26,7 @@ import org.springframework.integration.annotation.BridgeFrom;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.debezium.DebeziumMySqlTestContainer;
 import org.springframework.messaging.MessageChannel;
 
@@ -37,6 +38,7 @@ import org.springframework.messaging.MessageChannel;
  */
 @Configuration
 @EnableIntegration
+@EnableIntegrationAnnotations
 public class DebeziumTestConfiguration {
 
 	@Bean

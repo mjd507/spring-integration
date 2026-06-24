@@ -39,6 +39,7 @@ import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.log.LogAccessor;
 import org.springframework.integration.config.AbstractMethodAnnotationPostProcessor;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.MessagingAnnotationPostProcessor;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.expression.FunctionExpression;
@@ -102,6 +103,7 @@ public class CustomMessagingAnnotationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class Config {
 
 		@Bean(name = IntegrationContextUtils.MESSAGING_ANNOTATION_POSTPROCESSOR_NAME)

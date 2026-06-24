@@ -49,6 +49,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.NullChannel;
 import org.springframework.integration.config.ControlBusFactoryBean;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.scheduling.PollSkipAdvice;
 import org.springframework.integration.scheduling.SimplePollSkipStrategy;
@@ -431,6 +432,7 @@ public class PollerAdviceTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class Config {
 
 		@Bean

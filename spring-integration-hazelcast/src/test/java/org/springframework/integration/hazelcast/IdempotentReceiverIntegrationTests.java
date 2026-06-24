@@ -39,6 +39,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.GlobalChannelInterceptor;
 import org.springframework.integration.handler.MessageProcessor;
 import org.springframework.integration.handler.ServiceActivatingHandler;
@@ -218,6 +219,7 @@ public class IdempotentReceiverIntegrationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableIntegrationMBeanExport(server = "mBeanServer")
 	public static class ContextConfiguration {
 

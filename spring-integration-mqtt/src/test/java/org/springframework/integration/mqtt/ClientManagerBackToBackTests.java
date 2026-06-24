@@ -36,6 +36,7 @@ import org.springframework.context.event.EventListener;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.context.IntegrationFlowContext;
 import org.springframework.integration.endpoint.MessageProducerSupport;
@@ -323,6 +324,7 @@ class ClientManagerBackToBackTests implements MosquittoContainerTest {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class Mqttv5Config {
 
 		static final String TOPIC_NAME = "test-topic-v5";
@@ -406,6 +408,7 @@ class ClientManagerBackToBackTests implements MosquittoContainerTest {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class Mqttv5ConfigRuntime implements MessageDrivenChannelAdapterFactory {
 
 		static final String TOPIC_NAME = "test-topic-v5";

@@ -34,6 +34,7 @@ import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.hazelcast.HazelcastIntegrationTestUser;
 import org.springframework.integration.hazelcast.HazelcastTestRequestHandlerAdvice;
 import org.springframework.integration.hazelcast.outbound.HazelcastCacheWritingMessageHandler;
@@ -50,6 +51,7 @@ import org.springframework.messaging.MessageChannel;
  */
 @Configuration
 @EnableIntegration
+@EnableIntegrationAnnotations
 public class HazelcastIntegrationOutboundTestConfiguration {
 
 	@Bean

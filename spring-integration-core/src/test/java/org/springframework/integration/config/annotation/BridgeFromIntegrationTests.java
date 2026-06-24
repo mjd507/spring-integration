@@ -27,6 +27,7 @@ import org.springframework.integration.annotation.BridgeFrom;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.PollableChannel;
@@ -63,6 +64,7 @@ public class BridgeFromIntegrationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@ComponentScan(
 			basePackageClasses = BridgeFromIntegrationTests.class,
 			useDefaultFilters = false,

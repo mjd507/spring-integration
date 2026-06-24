@@ -38,6 +38,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.FluxMessageChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.MessageChannels;
 import org.springframework.integration.dsl.context.IntegrationFlowContext;
@@ -170,6 +171,7 @@ public class FluxMessageChannelTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class TestConfiguration {
 
 		@Bean

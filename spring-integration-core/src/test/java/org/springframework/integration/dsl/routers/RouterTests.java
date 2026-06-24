@@ -38,6 +38,7 @@ import org.springframework.integration.annotation.Router;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableMessageHistory;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlowDefinition;
@@ -630,6 +631,7 @@ public class RouterTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableMessageHistory({"recipientListOrder*", "recipient1*", "recipient2*"})
 	public static class ContextConfiguration {
 

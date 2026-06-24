@@ -33,6 +33,7 @@ import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageProducer;
 import org.springframework.integration.transformer.ObjectToStringTransformer;
 import org.springframework.integration.websocket.ClientWebSocketContainer;
@@ -93,6 +94,7 @@ public class WebSocketClientTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ClientConfig {
 
 		@Bean
@@ -151,6 +153,7 @@ public class WebSocketClientTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class ServerFlowConfig extends TestServerConfig {
 
 		@Bean

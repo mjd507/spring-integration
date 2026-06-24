@@ -34,6 +34,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.FluxMessageChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.http.inbound.RequestMapping;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.test.annotation.DirtiesContext;
@@ -106,6 +107,7 @@ public class WebFluxInboundEndpointTests {
 	@Configuration
 	@EnableWebFlux
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ContextConfiguration {
 
 		@Bean

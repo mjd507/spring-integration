@@ -59,6 +59,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.annotation.UseSpelInvoker;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.gateway.GatewayProxyFactoryBean;
 import org.springframework.integration.gateway.RequestReplyExchanger;
@@ -123,6 +124,7 @@ public class MethodInvokingMessageProcessorTests implements TestApplicationConte
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class MyConfiguration {
 
 		@ServiceActivator(inputChannel = "foo", outputChannel = "out")

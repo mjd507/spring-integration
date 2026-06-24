@@ -41,6 +41,7 @@ import org.springframework.integration.acks.SimpleAcknowledgment;
 import org.springframework.integration.amqp.support.RabbitTestContainer;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
@@ -92,6 +93,7 @@ public class AmqpClientInboundGatewayTests implements RabbitTestContainer {
 
 	@Configuration(proxyBeanMethods = false)
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ContextConfiguration {
 
 		@Bean

@@ -30,6 +30,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.dispatcher.RoundRobinLoadBalancingStrategy;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
@@ -126,6 +127,7 @@ public class SubscriberOrderTests {
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@MessageEndpoint
 	static class TestBean extends AbstractTestBean {
 

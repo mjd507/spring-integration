@@ -36,6 +36,7 @@ import org.springframework.integration.annotation.MessageEndpoint;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.PollableChannel;
@@ -94,6 +95,7 @@ public class ManualAckTests implements RabbitTestContainer {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@MessageEndpoint
 	public static class ManualAckConfig {
 

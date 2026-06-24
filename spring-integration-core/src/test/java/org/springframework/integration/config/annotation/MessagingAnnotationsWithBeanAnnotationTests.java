@@ -60,6 +60,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.FluxMessageChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableMessageHistory;
 import org.springframework.integration.context.IntegrationContextUtils;
 import org.springframework.integration.core.MessageSelector;
@@ -277,6 +278,7 @@ public class MessagingAnnotationsWithBeanAnnotationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableMessageHistory
 	public static class ContextConfiguration {
 
@@ -498,6 +500,7 @@ public class MessagingAnnotationsWithBeanAnnotationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class InvalidContextConfiguration {
 
 		@Bean

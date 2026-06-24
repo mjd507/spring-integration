@@ -51,6 +51,7 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.MessagePublishingErrorHandler;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableIntegrationManagement;
 import org.springframework.integration.core.MessageProducer;
 import org.springframework.integration.core.MessageSource;
@@ -293,7 +294,8 @@ public class IntegrationGraphServerTests {
 
 	@Configuration
 	@EnableIntegration
-	@EnableIntegrationManagement(observationPatterns = { "myFilter", "*" })
+	@EnableIntegrationAnnotations
+	@EnableIntegrationManagement(observationPatterns = {"myFilter", "*"})
 	@IntegrationComponentScan
 	@ImportResource("org/springframework/integration/graph/integration-graph-context.xml")
 	public static class Config {

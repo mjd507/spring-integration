@@ -29,6 +29,7 @@ import org.springframework.integration.annotation.Router;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.test.util.TestUtils;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.GenericMessage;
@@ -95,6 +96,7 @@ public class RouterAnnotationPostProcessorTests {
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@MessageEndpoint
 	public static class TestRouter {
 

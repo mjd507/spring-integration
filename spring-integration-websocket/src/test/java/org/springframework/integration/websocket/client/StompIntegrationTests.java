@@ -46,6 +46,7 @@ import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageProducer;
 import org.springframework.integration.event.inbound.ApplicationEventListeningMessageProducer;
 import org.springframework.integration.transformer.ExpressionEvaluatingTransformer;
@@ -333,6 +334,7 @@ public class StompIntegrationTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ClientConfig {
 
 		@Bean
@@ -463,6 +465,7 @@ public class StompIntegrationTests {
 	@Configuration
 	@EnableWebSocketMessageBroker
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@ComponentScan(
 			basePackageClasses = StompIntegrationTests.class,
 			useDefaultFilters = false,

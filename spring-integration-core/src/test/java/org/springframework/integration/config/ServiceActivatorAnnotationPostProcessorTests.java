@@ -79,6 +79,7 @@ public class ServiceActivatorAnnotationPostProcessorTests {
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@MessageEndpoint
 	public static class SimpleServiceActivatorAnnotationTestBean extends AbstractServiceActivatorAnnotationTestBean {
 

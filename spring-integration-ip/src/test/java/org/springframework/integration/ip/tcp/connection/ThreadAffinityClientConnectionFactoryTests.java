@@ -28,6 +28,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.ip.IpHeaders;
 import org.springframework.integration.ip.tcp.inbound.TcpInboundGateway;
 import org.springframework.integration.ip.tcp.outbound.TcpOutboundGateway;
@@ -105,6 +106,7 @@ public class ThreadAffinityClientConnectionFactoryTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ServerNet {
 
 		@Bean
@@ -129,6 +131,7 @@ public class ThreadAffinityClientConnectionFactoryTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ClientNet {
 
 		@Bean
@@ -163,6 +166,7 @@ public class ThreadAffinityClientConnectionFactoryTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ServerNio {
 
 		@Bean
@@ -187,6 +191,7 @@ public class ThreadAffinityClientConnectionFactoryTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ClientNio {
 
 		@Bean

@@ -34,6 +34,7 @@ import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableIntegrationManagement;
 import org.springframework.integration.scheduling.PollerMetadata;
 import org.springframework.integration.test.util.OnlyOnceTrigger;
@@ -103,6 +104,7 @@ public class SourcePollingChannelAdapterObservationTests extends SampleTestRunne
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableIntegrationManagement(observationPatterns = "*")
 	public static class ObservationIntegrationTestConfiguration {
 

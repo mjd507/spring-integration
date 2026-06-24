@@ -29,6 +29,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.PollerSpec;
@@ -191,6 +192,7 @@ public class MockMessageSourceTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@ImportResource("org/springframework/integration/test/mock/MockMessageSourceTests-context.xml")
 	public static class Config {
 

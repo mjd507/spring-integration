@@ -26,6 +26,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.endpoint.EventDrivenConsumer;
 import org.springframework.integration.handler.AbstractReplyProducingMessageHandler;
 import org.springframework.integration.handler.ServiceActivatingHandler;
@@ -140,6 +141,7 @@ public class DirectChannelSubscriptionTests {
 	}
 
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	static class Config {
 
 	}

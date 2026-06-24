@@ -29,6 +29,7 @@ import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableIntegrationManagement;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.handler.AbstractReplyProducingMessageHandler;
@@ -107,6 +108,7 @@ public class BeanNameTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableIntegrationManagement
 	public static class Config {
 

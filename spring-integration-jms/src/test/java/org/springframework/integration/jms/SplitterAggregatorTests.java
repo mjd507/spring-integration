@@ -34,6 +34,7 @@ import org.springframework.integration.annotation.Splitter;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.core.MessageSource;
 import org.springframework.integration.jms.inbound.JmsDestinationPollingSource;
 import org.springframework.integration.jms.outbound.JmsSendingMessageHandler;
@@ -77,6 +78,7 @@ public class SplitterAggregatorTests extends ActiveMQMultiContextTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ContextConfiguration {
 
 		@Bean

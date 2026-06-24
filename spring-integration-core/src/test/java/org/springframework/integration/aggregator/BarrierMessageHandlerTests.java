@@ -40,6 +40,7 @@ import org.springframework.integration.annotation.ServiceActivator;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnablePublisher;
 import org.springframework.integration.handler.ReplyRequiredException;
 import org.springframework.integration.support.MessageBuilder;
@@ -253,6 +254,7 @@ public class BarrierMessageHandlerTests {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnablePublisher
 	public static class Config {
 

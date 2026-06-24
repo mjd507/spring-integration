@@ -42,6 +42,7 @@ import org.springframework.integration.channel.NullChannel;
 import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableIntegrationManagement;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.gateway.MessagingGatewaySupport;
@@ -146,6 +147,7 @@ public class IntegrationObservabilityZipkinTests extends SampleTestRunner {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@EnableIntegrationManagement(
 			observationPatterns = {
 					"${spring.integration.management.observation-patterns:testInboundGateway,skippedObservationInboundGateway,queueChannel,myErrorChannel,observedEndpoint,publishSubscribeChannel}",

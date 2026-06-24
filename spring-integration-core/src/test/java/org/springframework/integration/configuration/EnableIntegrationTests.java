@@ -91,6 +91,7 @@ import org.springframework.integration.channel.QueueChannel;
 import org.springframework.integration.channel.interceptor.WireTap;
 import org.springframework.integration.config.ControlBusFactoryBean;
 import org.springframework.integration.config.EnableIntegration;
+import org.springframework.integration.config.EnableIntegrationAnnotations;
 import org.springframework.integration.config.EnableMessageHistory;
 import org.springframework.integration.config.EnablePublisher;
 import org.springframework.integration.config.GlobalChannelInterceptor;
@@ -835,6 +836,7 @@ public class EnableIntegrationTests implements TestApplicationContextAware {
 					classes = {ChildConfiguration.class, ContextConfiguration2.class}))
 	@IntegrationComponentScan
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	//	INT-3853
 	//	@PropertySource("classpath:org/springframework/integration/configuration/EnableIntegrationTests.properties")
 	public static class ContextConfiguration {
@@ -1079,6 +1081,7 @@ public class EnableIntegrationTests implements TestApplicationContextAware {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	@ImportResource("classpath:org/springframework/integration/configuration/EnableIntegrationTests-context.xml")
 	@EnableMessageHistory("${message.history.tracked.components}")
 	@EnablePublisher(defaultChannel = "publishedChannel", proxyTargetClass = true, order = 2147483646)
@@ -1280,6 +1283,7 @@ public class EnableIntegrationTests implements TestApplicationContextAware {
 
 	@Configuration
 	@EnableIntegration
+	@EnableIntegrationAnnotations
 	public static class ChildConfiguration {
 
 		@Bean
